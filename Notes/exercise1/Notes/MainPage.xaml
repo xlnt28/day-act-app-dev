@@ -1,39 +1,73 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:notes="clr-namespace:Notes"
-             x:Class="Notes.MainPage">
+             x:Class="Notes.MainPage"
+             BackgroundColor="#FFF9E8">
 
-    <VerticalStackLayout Margin="30,60,30,30">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,24" Spacing="14">
+            <Border BackgroundColor="#FFEEAE"
+                    Stroke="#F3CF5A"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 22"
+                    Padding="18">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Sticky Notes"
+                           FontSize="31"
+                           FontAttributes="Bold"
+                           TextColor="#3E2F10" />
+                    <Label Text="Quick local notes with a warm notebook vibe."
+                           FontSize="14"
+                           TextColor="#6E5A2D" />
+                </VerticalStackLayout>
+            </Border>
 
-        <Label Text="Notes"
-               HorizontalOptions="Center"
-               FontAttributes="Bold"
-               TextColor="{x:Static Member=notes:SharedResources.FontColor}" />
+            <Border BackgroundColor="#FFFDF3"
+                    Stroke="#F3DA8A"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="14">
+                <Editor x:Name="editor"
+                        Placeholder="Write your note here..."
+                        AutoSize="TextChanges"
+                        MinimumHeightRequest="280"
+                        MaxLength="3000"
+                        TextChanged="OnEditorTextChanged"
+                        TextColor="#3E2F10"
+                        PlaceholderColor="#A58C56"
+                        BackgroundColor="Transparent" />
+            </Border>
 
-        <Editor x:Name="editor"
-                Placeholder="Enter your note"
-                HeightRequest="{OnPlatform 100, Android=500, iOS=500}"
-                TextColor="{x:Static Member=notes:SharedResources.FontColor}" />
+            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                <Label x:Name="countLabel"
+                       Text="0 characters"
+                       FontSize="12"
+                       TextColor="#7B6840" />
+                <Label x:Name="statusMessage"
+                       Grid.Column="1"
+                       FontSize="12"
+                       TextColor="#7B6840" />
+            </Grid>
 
-        <Grid ColumnDefinitions="Auto, 30, Auto">
+            <Grid ColumnDefinitions="*,10,*">
+                <Button Grid.Column="0"
+                        Text="Save"
+                        HeightRequest="48"
+                        CornerRadius="12"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="#8B5CF6"
+                        Clicked="OnSaveButtonClicked" />
 
-            <Button Grid.Column="0"
-                    Text="Save"
-                    WidthRequest="100"
-                    TextColor="{x:Static Member=notes:SharedResources.FontColor}"
-                    BackgroundColor="{x:Static Member=notes:SharedResources.BackgroundColor}"
-                    Clicked="OnSaveButtonClicked" />
-
-            <Button Grid.Column="2"
-                    Text="Delete"
-                    WidthRequest="100"
-                    TextColor="{x:Static Member=notes:SharedResources.FontColor}"
-                    BackgroundColor="{x:Static Member=notes:SharedResources.BackgroundColor}"
-                    Clicked="OnDeleteButtonClicked" />
-
-        </Grid>
-
-    </VerticalStackLayout>
-
+                <Button Grid.Column="2"
+                        Text="Delete"
+                        HeightRequest="48"
+                        CornerRadius="12"
+                        FontAttributes="Bold"
+                        TextColor="#3E2F10"
+                        BackgroundColor="#FBD38D"
+                        Clicked="OnDeleteButtonClicked" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
