@@ -1,5 +1,4 @@
 ﻿using People.Models;
-using System.Collections.Generic;
 
 namespace People;
 
@@ -10,21 +9,51 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await RefreshPeople();
+    }
+
     public async void OnNewButtonClicked(object sender, EventArgs args)
     {
-        statusMessage.Text = "";
+        string name = newPerson.Text?.Trim() ?? string.Empty;
+        await App.PersonRepo.AddNewPerson(name);
 
-        await App.PersonRepo.AddNewPerson(newPerson.Text);
+        DisplayStatus(App.PersonRepo.StatusMessage);
 
-        statusMessage.Text = App.PersonRepo.StatusMessage;
+        if (!string.IsNullOrWhiteSpace(name) && !App.PersonRepo.StatusMessage.StartsWith("Failed", StringComparison.OrdinalIgnoreCase))
+        {
+            newPerson.Text = string.Empty;
+            await RefreshPeople();
+        }
     }
 
     public async void OnGetButtonClicked(object sender, EventArgs args)
     {
-        statusMessage.Text = "";
+        await RefreshPeople();
+    }
 
+    async Task RefreshPeople()
+    {
         List<Person> people = await App.PersonRepo.GetAllPeople();
-
         peopleList.ItemsSource = people;
+
+        if (!string.IsNullOrWhiteSpace(App.PersonRepo.StatusMessage))
+        {
+            DisplayStatus(App.PersonRepo.StatusMessage);
+        }
+    }
+
+    void DisplayStatus(string message)
+    {
+        statusMessage.Text = message;
+
+        bool hasError = message.StartsWith("Failed", StringComparison.OrdinalIgnoreCase)
+            || message.Contains("required", StringComparison.OrdinalIgnoreCase);
+
+        statusMessage.TextColor = hasError
+            ? Color.FromArgb("#C62828")
+            : Color.FromArgb("#0F9D58");
     }
 }

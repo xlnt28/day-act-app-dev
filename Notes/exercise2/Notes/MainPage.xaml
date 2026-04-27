@@ -1,46 +1,66 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.MainPage"
-             BackgroundColor="#F7F8FA">
+             BackgroundColor="#EEF4FF">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20,40,20,24" Spacing="16">
+        <VerticalStackLayout Padding="20,24" Spacing="16">
+            <Border StrokeThickness="0"
+                    StrokeShape="RoundRectangle 24"
+                    Padding="18">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#2563EB" Offset="0.0" />
+                        <GradientStop Color="#7C3AED" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
 
-            <VerticalStackLayout Spacing="4">
-                <Label Text="Notes"
-                       FontSize="30"
-                       FontAttributes="Bold"
-                       TextColor="#111827" />
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Notes Vault"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="White" />
+                    <Label Text="Capture and persist ideas instantly."
+                           FontSize="14"
+                           TextColor="#DBEAFE" />
+                </VerticalStackLayout>
+            </Border>
 
-                <Label Text="Capture thoughts quickly with a clean, focused layout."
-                       FontSize="14"
-                       TextColor="#6B7280" />
-            </VerticalStackLayout>
-
-            <Border StrokeThickness="1"
-                    Stroke="#E5E7EB"
-                    StrokeShape="RoundRectangle 16"
-                    BackgroundColor="White"
+            <Border BackgroundColor="White"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 22"
                     Padding="14">
                 <Editor x:Name="editor"
                         Placeholder="Write your note here..."
                         AutoSize="TextChanges"
-                        MinimumHeightRequest="220"
+                        MinimumHeightRequest="260"
                         MaxLength="3000"
-                        TextColor="#111827"
-                        PlaceholderColor="#9CA3AF"
+                        TextChanged="OnEditorTextChanged"
+                        TextColor="#0F172A"
+                        PlaceholderColor="#94A3B8"
                         BackgroundColor="Transparent" />
             </Border>
 
-            <Grid ColumnDefinitions="*,12,*">
+            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                <Label x:Name="countLabel"
+                       Text="0 characters"
+                       FontSize="12"
+                       TextColor="#64748B" />
+                <Label x:Name="statusMessage"
+                       Grid.Column="1"
+                       FontSize="12"
+                       TextColor="#64748B" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,10,*">
                 <Button Grid.Column="0"
                         Text="Save"
                         HeightRequest="48"
                         CornerRadius="12"
                         FontAttributes="Bold"
                         TextColor="White"
-                        BackgroundColor="#1F2937"
+                        BackgroundColor="#1D4ED8"
                         Clicked="OnSaveButtonClicked" />
 
                 <Button Grid.Column="2"
@@ -48,11 +68,10 @@
                         HeightRequest="48"
                         CornerRadius="12"
                         FontAttributes="Bold"
-                        TextColor="#1F2937"
-                        BackgroundColor="#E5E7EB"
+                        TextColor="#1E293B"
+                        BackgroundColor="#E2E8F0"
                         Clicked="OnDeleteButtonClicked" />
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

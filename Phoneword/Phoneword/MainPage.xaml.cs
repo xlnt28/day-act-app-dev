@@ -18,11 +18,15 @@ public partial class MainPage : ContentPage
         {
             CallButton.IsEnabled = true;
             CallButton.Text = "Call " + translatedNumber;
+            resultLabel.Text = $"Translated: {translatedNumber}";
+            resultLabel.TextColor = Color.FromArgb("#0F9D58");
         }
         else
         {
             CallButton.IsEnabled = false;
             CallButton.Text = "Call";
+            resultLabel.Text = "No valid phone number found.";
+            resultLabel.TextColor = Color.FromArgb("#C62828");
         }
     }
 

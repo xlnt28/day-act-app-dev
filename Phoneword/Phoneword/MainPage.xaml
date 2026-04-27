@@ -3,104 +3,100 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Phoneword.MainPage"
              Title="Phoneword"
-             BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray950}}">
-    <ContentPage.Resources>
-        <Style x:Key="SecondaryActionButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="BackgroundColor" Value="Transparent" />
-            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}" />
-            <Setter Property="BorderWidth" Value="1" />
-            <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray500}}" />
-        </Style>
+             BackgroundColor="#F3F6FF">
 
-        <Style x:Key="PrimaryActionButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}" />
-            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" />
-        </Style>
-    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout Padding="20,24" Spacing="16">
+            <Border StrokeThickness="0"
+                    StrokeShape="RoundRectangle 26"
+                    Padding="20">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1D4ED8" Offset="0.0" />
+                        <GradientStop Color="#7C3AED" Offset="0.55" />
+                        <GradientStop Color="#DB2777" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
 
-    <Grid Padding="20">
-        <VerticalStackLayout Spacing="14"
-                             MaximumWidthRequest="460"
-                             HorizontalOptions="Center"
-                             VerticalOptions="Center">
-            <Label Text="Phoneword"
-                   FontSize="30"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"
-                   TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}" />
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Phoneword"
+                           FontSize="32"
+                           FontAttributes="Bold"
+                           TextColor="White" />
+                    <Label Text="Turn words into dialable numbers instantly."
+                           FontSize="14"
+                           TextColor="#FCE7F3" />
+                </VerticalStackLayout>
+            </Border>
 
-            <Label Text="Translate text into a dialable number."
-                   FontSize="14"
-                   HorizontalTextAlignment="Center"
-                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+            <Border BackgroundColor="White"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 24"
+                    Padding="16">
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="Enter phoneword"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E293B" />
 
-            <Border BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}"
-                    Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}"
-                    StrokeThickness="1"
-                    Padding="18"
-                    StrokeShape="RoundRectangle 16">
-                <VerticalStackLayout Spacing="16">
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="Phone input"
-                               FontSize="12"
-                               TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
-                        <Border BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}"
-                                StrokeThickness="0"
-                                Padding="10,4"
-                                StrokeShape="RoundRectangle 10">
-                            <Entry x:Name="PhoneNumberText"
-                                   Text="1-555-NETMAUI"
-                                   Placeholder="Enter a phoneword"
-                                   ClearButtonVisibility="WhileEditing"
-                                   FontSize="16" />
-                        </Border>
-                    </VerticalStackLayout>
+                    <Border BackgroundColor="#F8FAFF"
+                            Stroke="#DDE4FF"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 14"
+                            Padding="12,6">
+                        <Entry x:Name="PhoneNumberText"
+                               Text="1-555-NETMAUI"
+                               Placeholder="Enter a phoneword"
+                               ClearButtonVisibility="WhileEditing"
+                               FontSize="17"
+                               TextColor="#0F172A"
+                               PlaceholderColor="#9AA5BF" />
+                    </Border>
 
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="Examples"
-                               FontSize="12"
-                               FontAttributes="Bold"
-                               TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray300}}" />
-
-                        <Grid ColumnDefinitions="Auto,*"
-                              ColumnSpacing="8">
-                            <Label Text="•"
-                                   FontSize="14"
-                                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}" />
-                            <Label Grid.Column="1"
-                                   Text="1-800-FLOWERS"
-                                   FontSize="14"
-                                   TextColor="{AppThemeBinding Light={StaticResource Gray800}, Dark={StaticResource Gray100}}" />
-                        </Grid>
-
-                        <Grid ColumnDefinitions="Auto,*"
-                              ColumnSpacing="8">
-                            <Label Text="•"
-                                   FontSize="14"
-                                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}" />
-                            <Label Grid.Column="1"
-                                   Text="1-555-NETMAUI"
-                                   FontSize="14"
-                                   TextColor="{AppThemeBinding Light={StaticResource Gray800}, Dark={StaticResource Gray100}}" />
-                        </Grid>
-                    </VerticalStackLayout>
+                    <Label x:Name="resultLabel"
+                           Text="Ready to translate"
+                           FontSize="13"
+                           TextColor="#64748B" />
 
                     <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
                         <Button x:Name="TranslateButton"
                                 Grid.Column="0"
-                                Style="{StaticResource SecondaryActionButton}"
                                 Text="Translate"
-                                Clicked="OnTranslate" />
+                                Clicked="OnTranslate"
+                                BackgroundColor="#EEF2FF"
+                                BorderColor="#D8E0FF"
+                                BorderWidth="1"
+                                TextColor="#4338CA"
+                                FontAttributes="Bold"
+                                CornerRadius="14" />
 
                         <Button x:Name="CallButton"
                                 Grid.Column="1"
-                                Style="{StaticResource PrimaryActionButton}"
                                 Text="Call"
                                 IsEnabled="False"
-                                Clicked="OnCall" />
+                                Clicked="OnCall"
+                                BackgroundColor="#1E293B"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="14" />
                     </Grid>
+
+                    <Border BackgroundColor="#F8FAFF"
+                            Stroke="#E2E8F0"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 14"
+                            Padding="12">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Try examples"
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   TextColor="#475569" />
+                            <Label Text="• 1-800-FLOWERS" FontSize="13" TextColor="#334155" />
+                            <Label Text="• 1-888-NEW-CARS" FontSize="13" TextColor="#334155" />
+                        </VerticalStackLayout>
+                    </Border>
                 </VerticalStackLayout>
             </Border>
         </VerticalStackLayout>
-    </Grid>
+    </ScrollView>
 </ContentPage>

@@ -1,11 +1,65 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Astronomy.Pages.AboutPage"
-             Title="About Contoso Astronomy">
+             Title="About"
+             BackgroundColor="#020617">
 
-    <StackLayout Padding="10" Spacing="5">
-        <Label Text="Version 1.0.0" />
-        <Label Text="Sunrise/Sunset data provided by: https://sunrise-sunset.org/api" />
-        <Label Text="Icons from Font Awesome" />
-    </StackLayout>
+    <Grid>
+        <Image Source="starfield.png" Aspect="AspectFill" Opacity="0.4" />
+        <BoxView Color="#020617" Opacity="0.72" />
+
+        <ScrollView>
+            <VerticalStackLayout Padding="22,24" Spacing="18">
+                <Border StrokeThickness="0" StrokeShape="RoundRectangle 24" Padding="20">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1E1B4B" Offset="0.0" />
+                            <GradientStop Color="#6D28D9" Offset="0.55" />
+                            <GradientStop Color="#DB2777" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="About Contoso Astronomy"
+                               FontSize="28"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        <Label Text="A lightweight app for moon phases, daylight timing, and astronomy facts."
+                               FontSize="14"
+                               TextColor="#FCE7F3" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Stroke="#334155" StrokeThickness="1" StrokeShape="RoundRectangle 20" BackgroundColor="#0F172A" Padding="18">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Version"
+                               FontSize="12"
+                               TextColor="#94A3B8" />
+                        <Label Text="1.0.0"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#F8FAFC" />
+
+                        <BoxView HeightRequest="1" Color="#1E293B" />
+
+                        <Label Text="Sunrise/Sunset data provided by"
+                               FontSize="12"
+                               TextColor="#94A3B8" />
+                        <Label Text="https://sunrise-sunset.org/api"
+                               FontSize="15"
+                               TextColor="#38BDF8" />
+
+                        <BoxView HeightRequest="1" Color="#1E293B" />
+
+                        <Label Text="Icons"
+                               FontSize="12"
+                               TextColor="#94A3B8" />
+                        <Label Text="Font Awesome"
+                               FontSize="15"
+                               TextColor="#E2E8F0" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
