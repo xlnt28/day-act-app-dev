@@ -1,18 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Phoneword.MainPage">
-    <VerticalStackLayout Spacing="15" Padding="20">
-        <Label Text = "Enter a Phoneword"
-                FontSize ="20"/>
-        <Entry x:Name = "PhoneNumberText"
-                Text = "1-555-NETMAUI" />
-        <Button x:Name = "TranslateButton"
-                Text = "Translate"
-                Clicked = "OnTranslate"/>
-        <Button x:Name = "CallButton"
-                Text = "Call"
-                IsEnabled = "False"
-                Clicked = "OnCall"/>
-    </VerticalStackLayout>
+             x:Class="Phoneword.MainPage"
+             Title="Phoneword">
+    <Grid Padding="24">
+        <VerticalStackLayout Spacing="14" MaximumWidthRequest="460" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Phoneword"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}" />
+
+            <Label Text="Convert vanity text to a dialable number."
+                   FontSize="14"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+
+            <Border BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}"
+                    Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}"
+                    StrokeThickness="1"
+                    Padding="16"
+                    StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="12">
+                    <Entry x:Name="PhoneNumberText"
+                           Text="1-555-NETMAUI"
+                           Placeholder="Enter a phoneword"
+                           ClearButtonVisibility="WhileEditing" />
+
+                    <Button x:Name="TranslateButton"
+                            Text="Translate"
+                            Clicked="OnTranslate" />
+
+                    <Button x:Name="CallButton"
+                            Text="Call"
+                            IsEnabled="False"
+                            Clicked="OnCall" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>
