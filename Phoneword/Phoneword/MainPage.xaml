@@ -19,17 +19,17 @@
     </ContentPage.Resources>
 
     <Grid Padding="20">
-        <VerticalStackLayout Spacing="16"
+        <VerticalStackLayout Spacing="14"
                              MaximumWidthRequest="460"
                              HorizontalOptions="Center"
                              VerticalOptions="Center">
             <Label Text="Phoneword"
-                   FontSize="32"
+                   FontSize="30"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
                    TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}" />
 
-            <Label Text="Convert text numbers into a clean dialable phone number."
+            <Label Text="Translate text into a dialable number."
                    FontSize="14"
                    HorizontalTextAlignment="Center"
                    TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
@@ -39,7 +39,7 @@
                     StrokeThickness="1"
                     Padding="18"
                     StrokeShape="RoundRectangle 16">
-                <VerticalStackLayout Spacing="14">
+                <VerticalStackLayout Spacing="16">
                     <VerticalStackLayout Spacing="8">
                         <Label Text="Phone input"
                                FontSize="12"
@@ -54,6 +54,35 @@
                                    ClearButtonVisibility="WhileEditing"
                                    FontSize="16" />
                         </Border>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Examples"
+                               FontSize="12"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray300}}" />
+
+                        <Grid ColumnDefinitions="Auto,*"
+                              ColumnSpacing="8">
+                            <Label Text="•"
+                                   FontSize="14"
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}" />
+                            <Label Grid.Column="1"
+                                   Text="1-800-FLOWERS"
+                                   FontSize="14"
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray800}, Dark={StaticResource Gray100}}" />
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto,*"
+                              ColumnSpacing="8">
+                            <Label Text="•"
+                                   FontSize="14"
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}" />
+                            <Label Grid.Column="1"
+                                   Text="1-555-NETMAUI"
+                                   FontSize="14"
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray800}, Dark={StaticResource Gray100}}" />
+                        </Grid>
                     </VerticalStackLayout>
 
                     <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
