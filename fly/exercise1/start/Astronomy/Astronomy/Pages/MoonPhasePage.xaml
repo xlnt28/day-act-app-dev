@@ -1,51 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Astronomy.Pages.MoonPhasePage"
-             BackgroundColor="Black"
-             Title="Moon Phase">
+             Title="Moon Phase"
+             BackgroundColor="#F6F7F9">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="textColor">White</Color>
-            <Color x:Key="boxColor">#44FFFFFF</Color>
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="{StaticResource textColor}" />
-                <Setter Property="HorizontalOptions" Value="Center" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Moon phase" FontAttributes="Bold" FontSize="24" TextColor="#1F2937" />
+                <Label x:Name="lblDate" FontSize="14" TextColor="#6B7280" />
+            </VerticalStackLayout>
 
-    <Grid RowSpacing="10" ColumnSpacing="5" Padding="5" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-        </Grid.ColumnDefinitions>
+            <Frame Padding="20"
+                   CornerRadius="20"
+                   BorderColor="#E5E7EB"
+                   BackgroundColor="White"
+                   HasShadow="False">
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Label x:Name="lblMoonPhaseIcon" FontSize="84" HorizontalTextAlignment="Center" />
+                    <Label x:Name="lblMoonPhaseText"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="#111827"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </Frame>
 
-        <Image Source="starfield.png" Aspect="AspectFill" Grid.RowSpan="4" Grid.ColumnSpan="4" />
+            <Label Text="Next 4 days"
+                   FontAttributes="Bold"
+                   FontSize="16"
+                   TextColor="#374151" />
 
-        <StackLayout Grid.Row="0" Grid.ColumnSpan="4">
-            <Label x:Name="lblDate" FontAttributes="Bold" />
-            <Label x:Name="lblMoonPhaseIcon" FontSize="96" />
-            <Label x:Name="lblMoonPhaseText" FontAttributes="Bold" />
-        </StackLayout>
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="Auto,Auto"
+                  RowSpacing="12"
+                  ColumnSpacing="12">
+                <Frame Grid.Row="0" Grid.Column="0" Padding="14" CornerRadius="16" BorderColor="#E5E7EB" BackgroundColor="White" HasShadow="False">
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                        <Label x:Name="lblPhaseIcon1" FontSize="44" HorizontalTextAlignment="Center" />
+                        <Label x:Name="lblPhaseText1" FontSize="14" FontAttributes="Bold" TextColor="#374151" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
 
-        <Label x:Name="lblPhaseIcon1" Grid.Column="0" Grid.Row="1" FontSize="48" />
-        <Label x:Name="lblPhaseIcon2" Grid.Column="1" Grid.Row="1" FontSize="48" />
-        <Label x:Name="lblPhaseIcon3" Grid.Column="2" Grid.Row="1" FontSize="48" />
-        <Label x:Name="lblPhaseIcon4" Grid.Column="3" Grid.Row="1" FontSize="48" />
+                <Frame Grid.Row="0" Grid.Column="1" Padding="14" CornerRadius="16" BorderColor="#E5E7EB" BackgroundColor="White" HasShadow="False">
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                        <Label x:Name="lblPhaseIcon2" FontSize="44" HorizontalTextAlignment="Center" />
+                        <Label x:Name="lblPhaseText2" FontSize="14" FontAttributes="Bold" TextColor="#374151" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
 
-        <Label x:Name="lblPhaseText1" Grid.Column="0" Grid.Row="2" FontAttributes="Bold" FontSize="Medium" />
-        <Label x:Name="lblPhaseText2" Grid.Column="1" Grid.Row="2" FontAttributes="Bold" FontSize="Medium" />
-        <Label x:Name="lblPhaseText3" Grid.Column="2" Grid.Row="2" FontAttributes="Bold" FontSize="Medium" />
-        <Label x:Name="lblPhaseText4" Grid.Column="3" Grid.Row="2" FontAttributes="Bold" FontSize="Medium" />
+                <Frame Grid.Row="1" Grid.Column="0" Padding="14" CornerRadius="16" BorderColor="#E5E7EB" BackgroundColor="White" HasShadow="False">
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                        <Label x:Name="lblPhaseIcon3" FontSize="44" HorizontalTextAlignment="Center" />
+                        <Label x:Name="lblPhaseText3" FontSize="14" FontAttributes="Bold" TextColor="#374151" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
 
-    </Grid>
+                <Frame Grid.Row="1" Grid.Column="1" Padding="14" CornerRadius="16" BorderColor="#E5E7EB" BackgroundColor="White" HasShadow="False">
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                        <Label x:Name="lblPhaseIcon4" FontSize="44" HorizontalTextAlignment="Center" />
+                        <Label x:Name="lblPhaseText4" FontSize="14" FontAttributes="Bold" TextColor="#374151" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -2,41 +2,48 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Astronomy.Pages.SunrisePage"
-             Title="SunrisePage">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Center" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+             Title="Sunrise">
+    <Grid RowDefinitions="Auto,*" Padding="20" BackgroundColor="#F6F7F9">
+        <VerticalStackLayout Spacing="4" Margin="0,8,0,16">
+            <Label Text="Sun schedule" FontAttributes="Bold" FontSize="24" TextColor="#1F2937" />
+            <Label x:Name="lblDate" FontSize="14" TextColor="#6B7280" />
+        </VerticalStackLayout>
 
-    <StackLayout Padding="10">
-        <Label x:Name="lblDate" WidthRequest="200" HorizontalTextAlignment="Center" FontAttributes="Bold" />
-        <ActivityIndicator x:Name="activityWaiting" IsRunning="False" Color="Orange" />
-        <Grid  RowSpacing="10" ColumnSpacing="5" Padding="5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <Frame Grid.Row="1"
+               Padding="20"
+               CornerRadius="20"
+               BorderColor="#E5E7EB"
+               BackgroundColor="White"
+               HasShadow="False">
+            <VerticalStackLayout Spacing="18">
+                <ActivityIndicator x:Name="activityWaiting"
+                                   IsRunning="False"
+                                   Color="#374151"
+                                   HorizontalOptions="Center" />
 
-            <Label Text="🌅" FontSize="72" Grid.Column="0" />
-            <Label Text="☀️" FontSize="72" Grid.Column="1" />
-            <Label Text="🌇" FontSize="72" Grid.Column="2" />
+                <Grid ColumnDefinitions="Auto,*"
+                      RowDefinitions="Auto,Auto,Auto"
+                      RowSpacing="14"
+                      ColumnSpacing="12">
+                    <Label Grid.Row="0" Text="🌅" FontSize="30" />
+                    <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="2">
+                        <Label Text="Sunrise" FontAttributes="Bold" TextColor="#111827" />
+                        <Label x:Name="lblSunrise" FontSize="16" TextColor="#374151" />
+                    </VerticalStackLayout>
 
-            <Label Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="1" />
-            <Label Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="1" />
-            <Label Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="1" />
+                    <Label Grid.Row="1" Text="☀️" FontSize="30" />
+                    <VerticalStackLayout Grid.Row="1" Grid.Column="1" Spacing="2">
+                        <Label Text="Daylight" FontAttributes="Bold" TextColor="#111827" />
+                        <Label x:Name="lblDaylight" FontSize="16" TextColor="#374151" />
+                    </VerticalStackLayout>
 
-            <Label x:Name="lblSunrise" WidthRequest="100" FontAttributes="None" Grid.Column="0" Grid.Row="2" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblDaylight" WidthRequest="150" FontAttributes="None" Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblSunset" WidthRequest="100" FontAttributes="None" Grid.Column="2" Grid.Row="2" HorizontalTextAlignment="Center" />
-        </Grid>
-    </StackLayout>
+                    <Label Grid.Row="2" Text="🌇" FontSize="30" />
+                    <VerticalStackLayout Grid.Row="2" Grid.Column="1" Spacing="2">
+                        <Label Text="Sunset" FontAttributes="Bold" TextColor="#111827" />
+                        <Label x:Name="lblSunset" FontSize="16" TextColor="#374151" />
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
 </ContentPage>
