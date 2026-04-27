@@ -7,21 +7,25 @@ public partial class MoviesListPage : ContentPage
         InitializeComponent();
     }
 
-    private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+    private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (e.Item == null)
+        if (e.CurrentSelection.Count == 0 || e.CurrentSelection[0] is not ViewModels.MovieViewModel selectedMovie)
             return;
 
+        App.MainViewModel.SelectedMovie = selectedMovie;
         await Navigation.PushAsync(new Views.MovieDetailPage());
 
-        // Deselect
-        ((ListView)sender).SelectedItem = null;
+        if (sender is CollectionView collectionView)
+        {
+            collectionView.SelectedItem = null;
+        }
     }
 
-    private void MenuItem_Clicked(object sender, EventArgs e)
+    private void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        MenuItem menuItem = (MenuItem)sender;
-        ViewModels.MovieViewModel movie = (ViewModels.MovieViewModel)menuItem.BindingContext;
+        if (sender is not Button button || button.BindingContext is not ViewModels.MovieViewModel movie)
+            return;
+
         App.MainViewModel?.DeleteMovie(movie);
     }
 }
