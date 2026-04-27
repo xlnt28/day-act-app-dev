@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ADET\\Phoneword\\Phoneword\\Phoneword.csproj": {}
+    "C:\\Users\\jason\\Desktop\\day-act-app-dev\\Phoneword\\Phoneword\\Phoneword.csproj": {}
   },
   "projects": {
-    "E:\\ADET\\Phoneword\\Phoneword\\Phoneword.csproj": {
+    "C:\\Users\\jason\\Desktop\\day-act-app-dev\\Phoneword\\Phoneword\\Phoneword.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ADET\\Phoneword\\Phoneword\\Phoneword.csproj",
+        "projectUniqueName": "C:\\Users\\jason\\Desktop\\day-act-app-dev\\Phoneword\\Phoneword\\Phoneword.csproj",
         "projectName": "Phoneword",
-        "projectPath": "E:\\ADET\\Phoneword\\Phoneword\\Phoneword.csproj",
-        "packagesPath": "C:\\Users\\iceco\\.nuget\\packages\\",
-        "outputPath": "E:\\ADET\\Phoneword\\Phoneword\\obj\\",
+        "projectPath": "C:\\Users\\jason\\Desktop\\day-act-app-dev\\Phoneword\\Phoneword\\Phoneword.csproj",
+        "packagesPath": "C:\\Users\\jason\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jason\\Desktop\\day-act-app-dev\\Phoneword\\Phoneword\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\iceco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jason\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
