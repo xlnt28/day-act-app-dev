@@ -1,99 +1,134 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="People.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="#101828">
+    BackgroundColor="#0B1220">
 
-    <Grid RowDefinitions="Auto,*" Padding="24">
+    <Grid RowDefinitions="Auto,*" Padding="20,24,20,20" RowSpacing="14">
 
-        <VerticalStackLayout Spacing="8" Margin="0,20,0,24">
-            <Label
-                Text="People Vault"
-                FontSize="34"
-                FontAttributes="Bold"
-                TextColor="White" />
+        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <VerticalStackLayout Spacing="4">
+                <Label
+                    Text="People"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="#F8FAFC" />
 
-            <Label
-                Text="Save names locally with SQLite"
-                FontSize="15"
-                TextColor="#98A2B3" />
-        </VerticalStackLayout>
+                <Label
+                    Text="Minimal local contacts"
+                    FontSize="14"
+                    TextColor="#94A3B8" />
+            </VerticalStackLayout>
+
+            <Border
+                Grid.Column="1"
+                Padding="12,8"
+                BackgroundColor="#111A2D"
+                Stroke="#24324B"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 14"
+                VerticalOptions="Start">
+                <Label
+                    Text="SQLite"
+                    FontSize="12"
+                    TextColor="#93C5FD"
+                    FontAttributes="Bold" />
+            </Border>
+        </Grid>
 
         <Border
             Grid.Row="1"
-            StrokeThickness="0"
-            BackgroundColor="#1D2939"
-            Padding="22"
-            StrokeShape="RoundRectangle 28">
+            StrokeThickness="1"
+            Stroke="#1F2A44"
+            BackgroundColor="#0F172A"
+            Padding="16"
+            StrokeShape="RoundRectangle 20">
 
-            <VerticalStackLayout Spacing="18">
+            <VerticalStackLayout Spacing="14">
 
-                <Border
-                    Stroke="#344054"
-                    StrokeThickness="1"
-                    BackgroundColor="#111827"
-                    Padding="14"
-                    StrokeShape="RoundRectangle 18">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                    <Border
+                        Stroke="#24324B"
+                        StrokeThickness="1"
+                        BackgroundColor="#111A2D"
+                        Padding="12,10"
+                        StrokeShape="RoundRectangle 14">
 
-                    <Entry
-                        x:Name="newPerson"
-                        Placeholder="Enter a name"
-                        PlaceholderColor="#667085"
-                        TextColor="White"
-                        FontSize="16"
-                        ClearButtonVisibility="WhileEditing" />
-                </Border>
-
-                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-                    <Button
-                        Text="Add Person"
-                        Clicked="OnNewButtonClicked"
-                        BackgroundColor="#7C3AED"
-                        TextColor="White"
-                        FontAttributes="Bold"
-                        CornerRadius="18"
-                        HeightRequest="52" />
+                        <Entry
+                            x:Name="newPerson"
+                            Placeholder="Type a name"
+                            PlaceholderColor="#64748B"
+                            TextColor="#E2E8F0"
+                            FontSize="15"
+                            ClearButtonVisibility="WhileEditing" />
+                    </Border>
 
                     <Button
                         Grid.Column="1"
-                        Text="Show All"
-                        Clicked="OnGetButtonClicked"
-                        BackgroundColor="#06B6D4"
+                        Text="Add"
+                        Clicked="OnNewButtonClicked"
+                        BackgroundColor="#2563EB"
                         TextColor="White"
                         FontAttributes="Bold"
-                        CornerRadius="18"
-                        HeightRequest="52" />
+                        CornerRadius="14"
+                        Padding="18,0"
+                        HeightRequest="46" />
                 </Grid>
+
+                <Button
+                    Text="Refresh List"
+                    Clicked="OnGetButtonClicked"
+                    BackgroundColor="#1E293B"
+                    TextColor="#CBD5E1"
+                    BorderColor="#334155"
+                    BorderWidth="1"
+                    FontAttributes="Bold"
+                    CornerRadius="14"
+                    HeightRequest="42" />
 
                 <Label
                     x:Name="statusMessage"
-                    TextColor="#A7F3D0"
-                    FontSize="14"
+                    TextColor="#86EFAC"
+                    FontSize="13"
                     HorizontalTextAlignment="Center" />
 
-                <Label
-                    Text="Saved People"
-                    TextColor="White"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    Margin="0,8,0,0" />
+                <Grid ColumnDefinitions="*,Auto" Margin="0,2,0,0">
+                    <Label
+                        Text="Saved People"
+                        TextColor="#F8FAFC"
+                        FontSize="18"
+                        FontAttributes="Bold" />
+
+                    <Border
+                        Grid.Column="1"
+                        Padding="8,2"
+                        BackgroundColor="#111A2D"
+                        Stroke="#24324B"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 10">
+                        <Label
+                            Text="Local"
+                            FontSize="11"
+                            TextColor="#94A3B8" />
+                    </Border>
+                </Grid>
 
                 <CollectionView
                     x:Name="peopleList"
                     SelectionMode="None">
 
                     <CollectionView.EmptyView>
-                        <VerticalStackLayout Padding="20" Spacing="8">
+                        <VerticalStackLayout Padding="18" Spacing="6">
                             <Label
-                                Text="No people saved yet"
-                                TextColor="#98A2B3"
-                                FontSize="16"
+                                Text="No saved people"
+                                TextColor="#94A3B8"
+                                FontSize="15"
                                 HorizontalTextAlignment="Center" />
                             <Label
-                                Text="Add a name above to get started."
-                                TextColor="#667085"
-                                FontSize="13"
+                                Text="Add a name to create your list."
+                                TextColor="#64748B"
+                                FontSize="12"
                                 HorizontalTextAlignment="Center" />
                         </VerticalStackLayout>
                     </CollectionView.EmptyView>
@@ -101,40 +136,43 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Border
-                                Margin="0,6"
-                                Padding="16"
-                                BackgroundColor="#111827"
-                                Stroke="#344054"
+                                Margin="0,4"
+                                Padding="12"
+                                BackgroundColor="#111A2D"
+                                Stroke="#24324B"
                                 StrokeThickness="1"
-                                StrokeShape="RoundRectangle 18">
+                                StrokeShape="RoundRectangle 14">
 
-                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
                                     <Border
-                                        WidthRequest="42"
-                                        HeightRequest="42"
-                                        BackgroundColor="#7C3AED"
+                                        WidthRequest="34"
+                                        HeightRequest="34"
+                                        BackgroundColor="#1D4ED8"
                                         StrokeThickness="0"
-                                        StrokeShape="RoundRectangle 21">
+                                        StrokeShape="RoundRectangle 17">
 
                                         <Label
                                             Text="👤"
-                                            FontSize="20"
+                                            FontSize="16"
                                             HorizontalOptions="Center"
                                             VerticalOptions="Center" />
                                     </Border>
 
-                                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Grid Grid.Column="1" ColumnDefinitions="*,Auto" VerticalOptions="Center">
                                         <Label
                                             Text="{Binding Name}"
-                                            TextColor="White"
-                                            FontSize="17"
-                                            FontAttributes="Bold" />
+                                            TextColor="#E2E8F0"
+                                            FontSize="16"
+                                            FontAttributes="Bold"
+                                            VerticalOptions="Center" />
 
                                         <Label
-                                            Text="{Binding Id, StringFormat='ID #{0}'}"
-                                            TextColor="#98A2B3"
-                                            FontSize="12" />
-                                    </VerticalStackLayout>
+                                            Grid.Column="1"
+                                            Text="{Binding Id, StringFormat='#{0}'}"
+                                            TextColor="#94A3B8"
+                                            FontSize="12"
+                                            VerticalOptions="Center" />
+                                    </Grid>
                                 </Grid>
                             </Border>
                         </DataTemplate>
