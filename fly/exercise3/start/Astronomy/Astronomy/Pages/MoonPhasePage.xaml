@@ -1,51 +1,79 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Astronomy.Pages.MoonPhasePage"
-             BackgroundColor="Black"
-             Title="Moon Phase">
+             Title="Moon"
+             BackgroundColor="#020617">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="textColor">White</Color>
-            <Color x:Key="boxColor">#44FFFFFF</Color>
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="{StaticResource textColor}" />
-                <Setter Property="HorizontalOptions" Value="Center" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    <Grid>
+        <Image Source="starfield.png" Aspect="AspectFill" Opacity="0.45" />
+        <BoxView Color="#020617" Opacity="0.62" />
 
-    <Grid RowSpacing="10" ColumnSpacing="5" Padding="5" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-        </Grid.ColumnDefinitions>
+        <ScrollView>
+            <VerticalStackLayout Padding="22,24" Spacing="18">
+                <Border StrokeThickness="0" StrokeShape="RoundRectangle 26" Padding="20">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1E1B4B" Offset="0.0" />
+                            <GradientStop Color="#6D28D9" Offset="0.55" />
+                            <GradientStop Color="#DB2777" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
 
-        <Image Source="starfield.png" Aspect="AspectFill" Grid.RowSpan="4" Grid.ColumnSpan="4" />
+                    <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                        <Label x:Name="lblDate"
+                               FontSize="14"
+                               TextColor="#FCE7F3"
+                               HorizontalTextAlignment="Center" />
+                        <Label x:Name="lblMoonPhaseIcon"
+                               FontSize="94"
+                               HorizontalTextAlignment="Center"
+                               TextColor="White" />
+                        <Label x:Name="lblMoonPhaseText"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               TextColor="White" />
+                    </VerticalStackLayout>
+                </Border>
 
-        <StackLayout Grid.Row="0" Grid.ColumnSpan="4">
-            <Label x:Name="lblDate" FontAttributes="Bold" />
-            <Label x:Name="lblMoonPhaseIcon" FontSize="96" />
-            <Label x:Name="lblMoonPhaseText" FontAttributes="Bold" />
-        </StackLayout>
+                <Label Text="Next 4 nights"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#CBD5E1" />
 
-        <Label x:Name="lblPhaseIcon1" Grid.Column="0" Grid.Row="1" FontSize="48" />
-        <Label x:Name="lblPhaseIcon2" Grid.Column="1" Grid.Row="1" FontSize="48" />
-        <Label x:Name="lblPhaseIcon3" Grid.Column="2" Grid.Row="1" FontSize="48" />
-        <Label x:Name="lblPhaseIcon4" Grid.Column="3" Grid.Row="1" FontSize="48" />
+                <Grid ColumnDefinitions="*,*"
+                      RowDefinitions="Auto,Auto"
+                      ColumnSpacing="12"
+                      RowSpacing="12">
+                    <Border Grid.Row="0" Grid.Column="0" Stroke="#334155" StrokeThickness="1" StrokeShape="RoundRectangle 16" BackgroundColor="#0F172A" Padding="14">
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Label x:Name="lblPhaseIcon1" FontSize="44" HorizontalTextAlignment="Center" TextColor="White" />
+                            <Label x:Name="lblPhaseText1" FontSize="13" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#38BDF8" />
+                        </VerticalStackLayout>
+                    </Border>
 
-        <Label x:Name="lblPhaseText1" Grid.Column="0" Grid.Row="2" FontAttributes="Bold" FontSize="Medium" />
-        <Label x:Name="lblPhaseText2" Grid.Column="1" Grid.Row="2" FontAttributes="Bold" FontSize="Medium" />
-        <Label x:Name="lblPhaseText3" Grid.Column="2" Grid.Row="2" FontAttributes="Bold" FontSize="Medium" />
-        <Label x:Name="lblPhaseText4" Grid.Column="3" Grid.Row="2" FontAttributes="Bold" FontSize="Medium" />
+                    <Border Grid.Row="0" Grid.Column="1" Stroke="#334155" StrokeThickness="1" StrokeShape="RoundRectangle 16" BackgroundColor="#0F172A" Padding="14">
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Label x:Name="lblPhaseIcon2" FontSize="44" HorizontalTextAlignment="Center" TextColor="White" />
+                            <Label x:Name="lblPhaseText2" FontSize="13" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#38BDF8" />
+                        </VerticalStackLayout>
+                    </Border>
 
+                    <Border Grid.Row="1" Grid.Column="0" Stroke="#334155" StrokeThickness="1" StrokeShape="RoundRectangle 16" BackgroundColor="#0F172A" Padding="14">
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Label x:Name="lblPhaseIcon3" FontSize="44" HorizontalTextAlignment="Center" TextColor="White" />
+                            <Label x:Name="lblPhaseText3" FontSize="13" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#38BDF8" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Row="1" Grid.Column="1" Stroke="#334155" StrokeThickness="1" StrokeShape="RoundRectangle 16" BackgroundColor="#0F172A" Padding="14">
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Label x:Name="lblPhaseIcon4" FontSize="44" HorizontalTextAlignment="Center" TextColor="White" />
+                            <Label x:Name="lblPhaseText4" FontSize="13" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#38BDF8" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
     </Grid>
 </ContentPage>

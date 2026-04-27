@@ -2,41 +2,71 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Astronomy.Pages.SunrisePage"
-             Title="SunrisePage">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Center" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+             Title="Daylight"
+             BackgroundColor="#020617">
 
-    <StackLayout Padding="10">
-        <Label x:Name="lblDate" WidthRequest="200" HorizontalTextAlignment="Center" FontAttributes="Bold" />
-        <ActivityIndicator x:Name="activityWaiting" IsRunning="False" Color="Orange" />
-        <Grid  RowSpacing="10" ColumnSpacing="5" Padding="5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <Image Source="starfield.png" Aspect="AspectFill" Opacity="0.45" />
+        <BoxView Color="#020617" Opacity="0.65" />
 
-            <Label Text="🌅" FontSize="72" Grid.Column="0" />
-            <Label Text="☀️" FontSize="72" Grid.Column="1" />
-            <Label Text="🌇" FontSize="72" Grid.Column="2" />
+        <ScrollView>
+            <VerticalStackLayout Padding="22,24" Spacing="18">
+                <Border StrokeThickness="0" StrokeShape="RoundRectangle 26" Padding="20">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1E1B4B" Offset="0.0" />
+                            <GradientStop Color="#4338CA" Offset="0.55" />
+                            <GradientStop Color="#EC4899" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
 
-            <Label Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="1" />
-            <Label Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="1" />
-            <Label Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="1" />
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Daylight Clock"
+                               FontSize="28"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                        <Label x:Name="lblDate"
+                               FontSize="14"
+                               TextColor="#FCE7F3" />
+                    </VerticalStackLayout>
+                </Border>
 
-            <Label x:Name="lblSunrise" WidthRequest="100" FontAttributes="None" Grid.Column="0" Grid.Row="2" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblDaylight" WidthRequest="150" FontAttributes="None" Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblSunset" WidthRequest="100" FontAttributes="None" Grid.Column="2" Grid.Row="2" HorizontalTextAlignment="Center" />
-        </Grid>
-    </StackLayout>
+                <Border Stroke="#334155"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 22"
+                        BackgroundColor="#0F172A"
+                        Padding="18">
+                    <VerticalStackLayout Spacing="16">
+                        <ActivityIndicator x:Name="activityWaiting"
+                                           IsRunning="False"
+                                           Color="#38BDF8"
+                                           HorizontalOptions="Center" />
+
+                        <Grid ColumnDefinitions="Auto,*"
+                              RowDefinitions="Auto,Auto,Auto"
+                              ColumnSpacing="14"
+                              RowSpacing="16">
+                            <Label Grid.Row="0" Text="🌅" FontSize="34" />
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="2">
+                                <Label Text="Sunrise" FontSize="14" FontAttributes="Bold" TextColor="#38BDF8" />
+                                <Label x:Name="lblSunrise" FontSize="17" TextColor="#E2E8F0" />
+                            </VerticalStackLayout>
+
+                            <Label Grid.Row="1" Text="☀️" FontSize="34" />
+                            <VerticalStackLayout Grid.Row="1" Grid.Column="1" Spacing="2">
+                                <Label Text="Daylight Duration" FontSize="14" FontAttributes="Bold" TextColor="#38BDF8" />
+                                <Label x:Name="lblDaylight" FontSize="17" TextColor="#E2E8F0" />
+                            </VerticalStackLayout>
+
+                            <Label Grid.Row="2" Text="🌇" FontSize="34" />
+                            <VerticalStackLayout Grid.Row="2" Grid.Column="1" Spacing="2">
+                                <Label Text="Sunset" FontSize="14" FontAttributes="Bold" TextColor="#38BDF8" />
+                                <Label x:Name="lblSunset" FontSize="17" TextColor="#E2E8F0" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
