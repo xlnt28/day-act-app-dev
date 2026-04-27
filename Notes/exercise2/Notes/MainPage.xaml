@@ -1,28 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Notes.MainPage">
+             x:Class="Notes.MainPage"
+             BackgroundColor="#F7F8FA">
 
-    <VerticalStackLayout Padding="30,60,30,30">
-        <Label Text="Notes"
-               HorizontalOptions="Center"
-               FontAttributes="Bold" />
+    <ScrollView>
+        <VerticalStackLayout Padding="20,40,20,24" Spacing="16">
 
-        <Editor x:Name="editor"
-                Placeholder="Enter your note"
-                HeightRequest="100" />
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Notes"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="#111827" />
 
-        <Grid ColumnDefinitions="Auto, 30, Auto">
-            <Button Grid.Column="0"
-                        Text="Save" 
-                        WidthRequest="100"
+                <Label Text="Capture thoughts quickly with a clean, focused layout."
+                       FontSize="14"
+                       TextColor="#6B7280" />
+            </VerticalStackLayout>
+
+            <Border StrokeThickness="1"
+                    Stroke="#E5E7EB"
+                    StrokeShape="RoundRectangle 16"
+                    BackgroundColor="White"
+                    Padding="14">
+                <Editor x:Name="editor"
+                        Placeholder="Write your note here..."
+                        AutoSize="TextChanges"
+                        MinimumHeightRequest="220"
+                        MaxLength="3000"
+                        TextColor="#111827"
+                        PlaceholderColor="#9CA3AF"
+                        BackgroundColor="Transparent" />
+            </Border>
+
+            <Grid ColumnDefinitions="*,12,*">
+                <Button Grid.Column="0"
+                        Text="Save"
+                        HeightRequest="48"
+                        CornerRadius="12"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="#1F2937"
                         Clicked="OnSaveButtonClicked" />
 
-            <Button Grid.Column="2"
-                    Text="Delete" 
-                    WidthRequest="100"
-                    Clicked="OnDeleteButtonClicked" />
-        </Grid>
-    </VerticalStackLayout>
+                <Button Grid.Column="2"
+                        Text="Delete"
+                        HeightRequest="48"
+                        CornerRadius="12"
+                        FontAttributes="Bold"
+                        TextColor="#1F2937"
+                        BackgroundColor="#E5E7EB"
+                        Clicked="OnDeleteButtonClicked" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>
