@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="Astronomy.Pages.AstronomicalBodiesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Astronomical Bodies"
+    BackgroundColor="#020617">
+
+    <ScrollView>
+        <Grid Padding="24" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 28"
+                Padding="24">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#312E81" Offset="0.0" />
+                        <GradientStop Color="#7C3AED" Offset="0.55" />
+                        <GradientStop Color="#DB2777" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="Cosmic Library"
+                        FontSize="30"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Choose a body to reveal its mass, age, and circumference."
+                        FontSize="15"
+                        TextColor="#FCE7F3" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid
+                Grid.Row="1"
+                RowSpacing="16"
+                ColumnSpacing="16">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    x:Name="btnComet"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="☄ Halley's Comet"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="#7C3AED"
+                    CornerRadius="22"
+                    HeightRequest="100" />
+
+                <Button
+                    x:Name="btnEarth"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="🌎 Earth"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="#0284C7"
+                    CornerRadius="22"
+                    HeightRequest="100" />
+
+                <Button
+                    x:Name="btnMoon"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="🌙 Moon"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="#475569"
+                    CornerRadius="22"
+                    HeightRequest="100" />
+
+                <Button
+                    x:Name="btnSun"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="☀ Sun"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    TextColor="#111827"
+                    BackgroundColor="#FACC15"
+                    CornerRadius="22"
+                    HeightRequest="100" />
+            </Grid>
+
+            <Border
+                Grid.Row="2"
+                Stroke="#334155"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 22"
+                BackgroundColor="#0F172A"
+                Padding="18">
+
+                <Label
+                    Text="Tip: Tap any card to open a detail page using Shell route navigation."
+                    FontSize="14"
+                    TextColor="#CBD5E1" />
+            </Border>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\ADET\\FlyoutNav-TabNav\\exercise1\\start\\Astronomy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2507A40-8F11-470D-9359-010E150336AD}|Astronomy\\Astronomy.csproj|e:\\adet\\flyoutnav-tabnav\\exercise1\\start\\astronomy\\astronomy\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A2507A40-8F11-470D-9359-010E150336AD}|Astronomy\\Astronomy.csproj|solutionrelative:astronomy\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "E:\\ADET\\FlyoutNav-TabNav\\exercise1\\start\\Astronomy\\Astronomy\\AppShell.xaml",
+              "RelativeDocumentMoniker": "Astronomy\\AppShell.xaml",
+              "ToolTip": "E:\\ADET\\FlyoutNav-TabNav\\exercise1\\start\\Astronomy\\Astronomy\\AppShell.xaml",
+              "RelativeToolTip": "Astronomy\\AppShell.xaml",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAowE8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-24T06:53:06.826Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

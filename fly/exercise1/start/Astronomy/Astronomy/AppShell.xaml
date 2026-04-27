@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Shell
+    x:Class="Astronomy.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Astronomy.Pages"
+    FlyoutIcon="moon.png"
+    FlyoutBackgroundColor="#10172A"
+    BackgroundColor="#111827"
+    ForegroundColor="White"
+    TitleColor="White"
+    DisabledColor="#64748B"
+    UnselectedColor="#94A3B8">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NebulaDark">#10172A</Color>
+            <Color x:Key="NebulaPurple">#6D28D9</Color>
+            <Color x:Key="NebulaPink">#EC4899</Color>
+            <Color x:Key="NebulaBlue">#38BDF8</Color>
+            <Color x:Key="NebulaText">#F8FAFC</Color>
+            <Color x:Key="NebulaMuted">#CBD5E1</Color>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource NebulaText}" />
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="180" Padding="24">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0F172A" Offset="0.0" />
+                    <GradientStop Color="#312E81" Offset="0.45" />
+                    <GradientStop Color="#7C3AED" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <VerticalStackLayout Spacing="8" VerticalOptions="Center">
+                <Image
+                    Source="moon.png"
+                    WidthRequest="64"
+                    HeightRequest="64"
+                    HorizontalOptions="Start" />
+
+                <Label
+                    Text="Nebula Observatory"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    TextColor="White" />
+
+                <Label
+                    Text="Explore moon phases, daylight, and cosmic facts."
+                    FontSize="13"
+                    TextColor="#E0E7FF" />
+            </VerticalStackLayout>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Moon Phase" Icon="moon.png">
+        <ShellContent
+            Title="Moon Phase"
+            ContentTemplate="{DataTemplate local:MoonPhasePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Sunrise" Icon="sun.png">
+        <ShellContent
+            Title="Sunrise"
+            ContentTemplate="{DataTemplate local:SunrisePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="About" Icon="question.png">
+        <ShellContent
+            Title="About"
+            ContentTemplate="{DataTemplate local:AboutPage}" />
+    </FlyoutItem>
+
+</Shell>
