@@ -1,4 +1,4 @@
-﻿namespace TipCalculator;
+namespace TipCalculator;
 
 public partial class MainPage : ContentPage
 {
@@ -20,30 +20,36 @@ public partial class MainPage : ContentPage
 
     void CalculateTip(bool roundUp, bool roundDown)
     {
-        double t;
-        if (Double.TryParse(billInput.Text, out t) && t > 0)
+        if (double.TryParse(billInput.Text, out double billTotal) && billTotal > 0)
         {
             double pct = Math.Round(tipPercentSlider.Value);
-            double tip = Math.Round(t * (pct / 100.0), 2);
+            double tip = Math.Round(billTotal * (pct / 100.0), 2);
 
-            double final = t + tip;
+            double final = billTotal + tip;
 
             if (roundUp)
             {
                 final = Math.Ceiling(final);
-                tip = final - t;
+                tip = final - billTotal;
             }
             else if (roundDown)
             {
                 final = Math.Floor(final);
-                tip = final - t;
+                tip = final - billTotal;
             }
 
             tipOutput.Text = tip.ToString("C");
             totalOutput.Text = final.ToString("C");
+            return;
         }
+
+        tipOutput.Text = 0d.ToString("C");
+        totalOutput.Text = 0d.ToString("C");
     }
 
-    void OnNormalTip(object sender, EventArgs e) { tipPercentSlider.Value = 15; }
-    void OnGenerousTip(object sender, EventArgs e) { tipPercentSlider.Value = 20; }
+    void OnNormalTip(object sender, EventArgs e) => tipPercentSlider.Value = 15;
+
+    void OnGenerousTip(object sender, EventArgs e) => tipPercentSlider.Value = 20;
+
+    void OnAmazingTip(object sender, EventArgs e) => tipPercentSlider.Value = 25;
 }

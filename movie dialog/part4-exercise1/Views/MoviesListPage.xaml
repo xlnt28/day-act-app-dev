@@ -6,24 +6,81 @@
              x:Class="MovieCatalog.Views.MoviesListPage"
              x:DataType="vm:MovieListViewModel"
              Title="Movies"
-             BindingContext="{x:Static local:App.MainViewModel}">
+             BindingContext="{x:Static local:App.MainViewModel}"
+             BackgroundColor="#F5F7FC">
 
-    <ListView ItemsSource="{Binding Movies}"
-              SelectedItem="{Binding SelectedMovie, Mode=OneWayToSource}"
-              Margin="10"
-              ItemTapped="ListView_ItemTapped">
+    <ScrollView>
+        <VerticalStackLayout Padding="18,20" Spacing="14">
+            <Border BackgroundColor="White" StrokeThickness="0" StrokeShape="RoundRectangle 24" Padding="18">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Movie Catalog"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="#172033" />
+                    <Label Text="Browse and manage your collection. Tap a movie for full details."
+                           FontSize="13"
+                           TextColor="#66758F" />
+                </VerticalStackLayout>
+            </Border>
 
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Title}" x:DataType="vm:MovieViewModel">
-                    <TextCell.ContextActions>
-                        <MenuItem Text="Delete"
-                                  IsDestructive="True"
-                                  Clicked="MenuItem_Clicked" />
-                    </TextCell.ContextActions>
-                </TextCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
+            <CollectionView ItemsSource="{Binding Movies}"
+                            SelectionMode="Single"
+                            SelectionChanged="CollectionView_SelectionChanged"
+                            Margin="0"
+                            VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:MovieViewModel">
+                        <Border BackgroundColor="White"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 18"
+                                Margin="0,0,0,10"
+                                Padding="14">
+                            <Grid RowDefinitions="Auto,Auto,Auto"
+                                  ColumnDefinitions="*,Auto"
+                                  RowSpacing="6">
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Text="{Binding Title}"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="#111A2E" />
 
-    </ListView>
+                                <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Text="{Binding Director}"
+                                       FontSize="13"
+                                       TextColor="#64748B" />
+
+                                <Label Grid.Row="2"
+                                       Grid.Column="0"
+                                       Text="{Binding Studio}"
+                                       FontSize="13"
+                                       TextColor="#64748B" />
+
+                                <VerticalStackLayout Grid.Row="0"
+                                                     Grid.RowSpan="3"
+                                                     Grid.Column="1"
+                                                     Spacing="10"
+                                                     HorizontalOptions="End"
+                                                     VerticalOptions="Center">
+                                    <Label Text="{Binding Year, StringFormat='{0:yyyy}'}"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="End"
+                                           TextColor="#3563FF" />
+                                    <Button Text="Delete"
+                                            Clicked="DeleteButton_Clicked"
+                                            FontSize="12"
+                                            Padding="10,4"
+                                            BackgroundColor="#FFE9EC"
+                                            TextColor="#B42318"
+                                            CornerRadius="10" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
