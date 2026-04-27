@@ -1,17 +1,35 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Phoneword.MainPage"
-             Title="Phoneword">
-    <Grid Padding="24">
-        <VerticalStackLayout Spacing="14" MaximumWidthRequest="460" HorizontalOptions="Center" VerticalOptions="Center">
+             Title="Phoneword"
+             BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray950}}">
+    <ContentPage.Resources>
+        <Style x:Key="SecondaryActionButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray500}}" />
+        </Style>
+
+        <Style x:Key="PrimaryActionButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid Padding="20">
+        <VerticalStackLayout Spacing="16"
+                             MaximumWidthRequest="460"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
             <Label Text="Phoneword"
-                   FontSize="30"
+                   FontSize="32"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
                    TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}" />
 
-            <Label Text="Convert vanity text to a dialable number."
+            <Label Text="Convert text numbers into a clean dialable phone number."
                    FontSize="14"
                    HorizontalTextAlignment="Center"
                    TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
@@ -19,22 +37,39 @@
             <Border BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}"
                     Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}"
                     StrokeThickness="1"
-                    Padding="16"
-                    StrokeShape="RoundRectangle 12">
-                <VerticalStackLayout Spacing="12">
-                    <Entry x:Name="PhoneNumberText"
-                           Text="1-555-NETMAUI"
-                           Placeholder="Enter a phoneword"
-                           ClearButtonVisibility="WhileEditing" />
+                    Padding="18"
+                    StrokeShape="RoundRectangle 16">
+                <VerticalStackLayout Spacing="14">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Phone input"
+                               FontSize="12"
+                               TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+                        <Border BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}"
+                                StrokeThickness="0"
+                                Padding="10,4"
+                                StrokeShape="RoundRectangle 10">
+                            <Entry x:Name="PhoneNumberText"
+                                   Text="1-555-NETMAUI"
+                                   Placeholder="Enter a phoneword"
+                                   ClearButtonVisibility="WhileEditing"
+                                   FontSize="16" />
+                        </Border>
+                    </VerticalStackLayout>
 
-                    <Button x:Name="TranslateButton"
-                            Text="Translate"
-                            Clicked="OnTranslate" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button x:Name="TranslateButton"
+                                Grid.Column="0"
+                                Style="{StaticResource SecondaryActionButton}"
+                                Text="Translate"
+                                Clicked="OnTranslate" />
 
-                    <Button x:Name="CallButton"
-                            Text="Call"
-                            IsEnabled="False"
-                            Clicked="OnCall" />
+                        <Button x:Name="CallButton"
+                                Grid.Column="1"
+                                Style="{StaticResource PrimaryActionButton}"
+                                Text="Call"
+                                IsEnabled="False"
+                                Clicked="OnCall" />
+                    </Grid>
                 </VerticalStackLayout>
             </Border>
         </VerticalStackLayout>
