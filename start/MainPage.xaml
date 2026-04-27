@@ -3,37 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cvt="clr-namespace:WeatherClient.Converters"
              x:Class="WeatherClient.MainPage"
-             BackgroundColor="#F4F7FB">
+             BackgroundColor="#F2F4F7">
 
     <ContentPage.Resources>
         <cvt:WeatherConditionToImageConverter x:Key="WeatherConditionToImageConverter" />
     </ContentPage.Resources>
 
     <ScrollView>
-        <VerticalStackLayout Padding="24" Spacing="20">
+        <VerticalStackLayout Padding="20,24" Spacing="16">
 
             <Border StrokeThickness="0"
-                    BackgroundColor="#5B6CFF"
-                    StrokeShape="RoundRectangle 28">
-                <VerticalStackLayout Padding="24" Spacing="10">
+                    BackgroundColor="#111827"
+                    StrokeShape="RoundRectangle 20">
+                <VerticalStackLayout Padding="20" Spacing="6">
                     <Label Text="Weather Forecast"
-                           FontSize="30"
+                           FontSize="26"
                            FontAttributes="Bold"
                            TextColor="White" />
 
                     <Label Text="Check the latest weather conditions for your area."
                            FontSize="14"
-                           TextColor="#E8EBFF" />
+                           TextColor="#D1D5DB" />
                 </VerticalStackLayout>
             </Border>
 
             <Border StrokeThickness="0"
                     BackgroundColor="White"
-                    StrokeShape="RoundRectangle 24">
-                <VerticalStackLayout Padding="20" Spacing="18">
+                    StrokeShape="RoundRectangle 20">
+                <VerticalStackLayout Padding="18" Spacing="14">
 
                     <Label Text="Search Location"
-                           FontSize="18"
+                           FontSize="16"
                            FontAttributes="Bold"
                            TextColor="#1F2937" />
 
@@ -41,51 +41,43 @@
                            FontSize="13"
                            TextColor="#6B7280" />
 
-                    <Grid ColumnDefinitions="*,Auto"
-                          RowDefinitions="Auto,Auto"
-                          ColumnSpacing="12"
-                          RowSpacing="12">
+                    <VerticalStackLayout Spacing="10">
 
                         <Entry x:Name="txtPostalCode"
-                               Grid.Row="0"
-                               Grid.Column="0"
                                Placeholder="Postal code"
                                Keyboard="Text"
-                               BackgroundColor="#F8FAFC"
+                               BackgroundColor="#F3F4F6"
                                TextColor="#111827"
                                PlaceholderColor="#9CA3AF"
-                               HeightRequest="52" />
+                               HeightRequest="50"
+                               Margin="0" />
 
                         <Button x:Name="btnRefresh"
-                                Grid.Row="0"
-                                Grid.Column="1"
                                 Text="Refresh"
                                 Clicked="btnRefresh_Clicked"
-                                HeightRequest="52"
-                                Padding="24,0"
-                                BackgroundColor="#5B6CFF"
+                                HeightRequest="46"
+                                BackgroundColor="#1F2937"
                                 TextColor="White"
-                                CornerRadius="16" />
+                                CornerRadius="12" />
 
                         <ActivityIndicator x:Name="actIsBusy"
-                                           Grid.Row="1"
-                                           Grid.ColumnSpan="2"
                                            HorizontalOptions="Center"
-                                           Color="#5B6CFF" />
-                    </Grid>
+                                           Margin="0,2,0,0"
+                                           Color="#4B5563" />
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
             </Border>
 
             <Border StrokeThickness="0"
                     BackgroundColor="White"
-                    StrokeShape="RoundRectangle 24">
-                <VerticalStackLayout Padding="20" Spacing="20">
+                    StrokeShape="RoundRectangle 20">
+                <VerticalStackLayout Padding="18" Spacing="14">
 
                     <HorizontalStackLayout Spacing="12">
                         <Border StrokeThickness="0"
-                                BackgroundColor="#EEF2FF"
-                                StrokeShape="RoundRectangle 16"
-                                Padding="12">
+                                BackgroundColor="#F3F4F6"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="10">
                             <Image HeightRequest="36"
                                    WidthRequest="36"
                                    HorizontalOptions="Center"
@@ -95,80 +87,70 @@
 
                         <VerticalStackLayout Spacing="2" VerticalOptions="Center">
                             <Label Text="Today’s Forecast"
-                                   FontSize="20"
+                                   FontSize="18"
                                    FontAttributes="Bold"
                                    TextColor="#111827" />
-                            <Label Text="Live weather details"
+                            <Label Text="Minimal weather overview"
                                    FontSize="13"
                                    TextColor="#6B7280" />
                         </VerticalStackLayout>
                     </HorizontalStackLayout>
 
-                    <Grid ColumnDefinitions="*,*"
-                          RowDefinitions="Auto,Auto"
-                          ColumnSpacing="14"
-                          RowSpacing="14">
+                    <Grid ColumnDefinitions="Auto,*"
+                          RowDefinitions="Auto,Auto,Auto,Auto"
+                          ColumnSpacing="8"
+                          RowSpacing="10">
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Temperature"
+                               FontSize="13"
+                               TextColor="#6B7280" />
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Text="{Binding Temperature}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="End"
+                               TextColor="#111827" />
 
-                        <Border Grid.Row="0" Grid.Column="0"
-                                StrokeThickness="0"
-                                BackgroundColor="#F8FAFC"
-                                StrokeShape="RoundRectangle 20">
-                            <VerticalStackLayout Padding="16" Spacing="6">
-                                <Label Text="Temperature"
-                                       FontSize="13"
-                                       TextColor="#6B7280" />
-                                <Label Text="{Binding Temperature}"
-                                       FontSize="24"
-                                       FontAttributes="Bold"
-                                       TextColor="#111827" />
-                            </VerticalStackLayout>
-                        </Border>
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Humidity"
+                               FontSize="13"
+                               TextColor="#6B7280" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding Humidity}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="End"
+                               TextColor="#111827" />
 
-                        <Border Grid.Row="0" Grid.Column="1"
-                                StrokeThickness="0"
-                                BackgroundColor="#F8FAFC"
-                                StrokeShape="RoundRectangle 20">
-                            <VerticalStackLayout Padding="16" Spacing="6">
-                                <Label Text="Humidity"
-                                       FontSize="13"
-                                       TextColor="#6B7280" />
-                                <Label Text="{Binding Humidity}"
-                                       FontSize="24"
-                                       FontAttributes="Bold"
-                                       TextColor="#111827" />
-                            </VerticalStackLayout>
-                        </Border>
+                        <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Precipitation"
+                               FontSize="13"
+                               TextColor="#6B7280" />
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               Text="{Binding Precipitation}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="End"
+                               TextColor="#111827" />
 
-                        <Border Grid.Row="1" Grid.Column="0"
-                                StrokeThickness="0"
-                                BackgroundColor="#F8FAFC"
-                                StrokeShape="RoundRectangle 20">
-                            <VerticalStackLayout Padding="16" Spacing="6">
-                                <Label Text="Precipitation"
-                                       FontSize="13"
-                                       TextColor="#6B7280" />
-                                <Label Text="{Binding Precipitation}"
-                                       FontSize="24"
-                                       FontAttributes="Bold"
-                                       TextColor="#111827" />
-                            </VerticalStackLayout>
-                        </Border>
-
-                        <Border Grid.Row="1" Grid.Column="1"
-                                StrokeThickness="0"
-                                BackgroundColor="#F8FAFC"
-                                StrokeShape="RoundRectangle 20">
-                            <VerticalStackLayout Padding="16" Spacing="6">
-                                <Label Text="Wind"
-                                       FontSize="13"
-                                       TextColor="#6B7280" />
-                                <Label Text="{Binding Wind}"
-                                       FontSize="24"
-                                       FontAttributes="Bold"
-                                       TextColor="#111827" />
-                            </VerticalStackLayout>
-                        </Border>
-
+                        <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Text="Wind"
+                               FontSize="13"
+                               TextColor="#6B7280" />
+                        <Label Grid.Row="3"
+                               Grid.Column="1"
+                               Text="{Binding Wind}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="End"
+                               TextColor="#111827" />
                     </Grid>
                 </VerticalStackLayout>
             </Border>
